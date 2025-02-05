@@ -3,6 +3,10 @@ let dinScore = 0;
 let motstander;
 let motstanderScore = 0;
 
+const seier = new Audio("lydeffekter/Cash.mp3")
+const tap = new Audio("lydeffekter/buzzer.mp3")
+const uavgjort = new Audio("lydeffekter/swoosh.mp3")
+
 const valg = ["Bilder/stein", "Bilder/saks", "Bilder/papir"]
 
 window.onload = function() {
@@ -25,30 +29,37 @@ function velgValget() {
     if (deg == motstander) {
         dinScore += 1;
         motstanderScore += 1;
+        uavgjort.play()
     }
     else {
         if (deg == "Bilder/stein") {
             if (motstander == "Bilder/saks") {
                 dinScore += 1;
+                seier.play();
             }
             else if (motstander == "Bilder/papir") {
                 motstanderScore += 1;
+                tap.play();
             }
         }
         else if (deg == "Bilder/saks") {
             if (motstander == "Bilder/papir") {
                 dinScore += 1;
+                seier.play();
             }
             else if (motstander == "Bilder/stein") {
                 motstanderScore += 1;
+                tap.play();
             }
         }
         else if (deg == "Bilder/papir") {
             if (motstander == "Bilder/stein") {
                 dinScore += 1;
+                seier.play();
             }
             else if (motstander == "Bilder/saks") {
                 motstanderScore += 1;
+                tap.play();
             }
         }
     }
