@@ -10,4 +10,31 @@ img {
 
 body {
     font-family: "Exo 2";
+    text-align: center;
+}
+
+#motstander-valg {
+    width: 240px;
+    height: 240px;
+    background-color: lightblue;
+    margin-top: 10px;
+}
+
+#ditt-valg {
+    width: 240px;
+    height: 240px;
+    background-color: lightgoldenrodyellow;
+    margin-top: 10px;
+}
+
+#valg {
+    width: 240px;
+    height: 80px;
+    margin: 0 auto;
+    background-color: lightgreen;
+}
+
+#valg img {
+    width: 80px;
+    height: 80px;
 }
