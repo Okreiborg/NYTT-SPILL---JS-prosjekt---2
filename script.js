@@ -6,6 +6,8 @@ let motstanderScore = 0;
 const seier = new Audio("lydeffekter/Cash.mp3")
 const tap = new Audio("lydeffekter/buzzer.mp3")
 const uavgjort = new Audio("lydeffekter/swoosh.mp3")
+const vinner = new Audio("lydeffekter/applause.mp3")
+const taper = new Audio("lydeffekter/loss.mp3")
 
 const valg = ["Bilder/stein", "Bilder/saks", "Bilder/papir"]
 
@@ -19,6 +21,7 @@ window.onload = function() {
     }
 }
 
+
 function velgValget() {
     deg = this.id
     document.getElementById("ditt-valg").src = deg + ".png"
@@ -29,7 +32,7 @@ function velgValget() {
     if (deg == motstander) {
         dinScore += 1;
         motstanderScore += 1;
-        uavgjort.play()
+        uavgjort.play();
     }
     else {
         if (deg == "Bilder/stein") {
@@ -61,6 +64,12 @@ function velgValget() {
                 motstanderScore += 1;
                 tap.play();
             }
+        }
+        if (dinScore >= 10) {
+            alert("Gratulerer du vant!")
+        }
+        else if (motstanderScore >= 10) {
+            alert("Du tapte. Prøv på nytt")
         }
     }
 
