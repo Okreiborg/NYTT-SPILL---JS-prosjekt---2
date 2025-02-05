@@ -8,6 +8,11 @@ img {
     width: 100%;
 }
 
+img:hover {
+    transform: scale(1.1);
+    transition: transform 0.3s ease-in-out;
+}
+
 body {
     font-family: "Exo 2";
     text-align: center;
