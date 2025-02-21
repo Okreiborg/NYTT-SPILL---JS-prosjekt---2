@@ -24,6 +24,11 @@ window.onload = function() {
 
 function velgValget() {
     deg = this.id
+
+    document.getElementById("ditt-valg").src = "";
+    document.getElementById("motstander-valg").src = "";
+    document.getElementById("valg").style.pointerEvents = "none"
+
     document.getElementById("ditt-valg").src = deg + ".png"
     
     motstander = valg[Math.floor(Math.random()* 3)];
