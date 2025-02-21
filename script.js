@@ -29,55 +29,75 @@ function velgValget() {
     document.getElementById("motstander-valg").src = "";
     document.getElementById("valg").style.pointerEvents = "none"
 
-    document.getElementById("ditt-valg").src = deg + ".png"
+let nedtelling = 3;
+document.getElementById("motstander-score").innerText = `Vent... ${nedtelling}`;
+
+const interval = setInterval(() => {
+    nedtelling--;
+    if (nedtelling > 0) {
+        document.getElementById("motstander-score").innerText = `Vent... ${nedtelling}`;
+
+    } else{
+            clearInterval(interval)
+            document.getElementById("motstander-score").innerText = motstanderScore;
+
+            document.getElementById("ditt-valg").src = deg + ".png"
+            motstander = valg[Math.floor(Math.random()* 3)];
+            document.getElementById("motstander-valg").src = motstander + ".png"
+
+            if (deg == motstander) {
+                dinScore += 1;
+                motstanderScore += 1;
+                uavgjort.play();
+            }   
+            else {
+            if (deg == "Bilder/stein") {
+                if (motstander == "Bilder/saks") {
+                    dinScore += 1;
+                    seier.play();
+                }
+                else if (motstander == "Bilder/papir") {
+                    motstanderScore += 1;
+                    tap.play();
+                }
+            }
+            else if (deg == "Bilder/saks") {
+                if (motstander == "Bilder/papir") {
+                    dinScore += 1;
+                    seier.play();
+                }
+                else if (motstander == "Bilder/stein") {
+                    motstanderScore += 1;
+                    tap.play();
+                }
+            }
+            else if (deg == "Bilder/papir") {
+                if (motstander == "Bilder/stein") {
+                    dinScore += 1;
+                    seier.play();
+                }
+                else if (motstander == "Bilder/saks") {
+                    motstanderScore += 1;
+                    tap.play();
+                }
+            }
+        }
+            
+            document.getElementById("din-score").innerText = dinScore;
+            document.getElementById("motstander-score").innerText = motstanderScore
+        
+            if (dinScore>=10) {
+                vinner.play();
+                alert("Gratulerer du vant")
+            } else if (motstanderScore >=10) {
+                taper.play();
+                alert("Du tapte. Prøv på nytt")
+            }
+        
+            document.getElementById("valg").style.pointerEvents = "auto";   
+        
+        }
     
-    motstander = valg[Math.floor(Math.random()* 3)];
-    document.getElementById("motstander-valg").src = motstander + ".png"
+    }, 1000);
 
-    if (deg == motstander) {
-        dinScore += 1;
-        motstanderScore += 1;
-        uavgjort.play();
-    }
-    else {
-        if (deg == "Bilder/stein") {
-            if (motstander == "Bilder/saks") {
-                dinScore += 1;
-                seier.play();
-            }
-            else if (motstander == "Bilder/papir") {
-                motstanderScore += 1;
-                tap.play();
-            }
-        }
-        else if (deg == "Bilder/saks") {
-            if (motstander == "Bilder/papir") {
-                dinScore += 1;
-                seier.play();
-            }
-            else if (motstander == "Bilder/stein") {
-                motstanderScore += 1;
-                tap.play();
-            }
-        }
-        else if (deg == "Bilder/papir") {
-            if (motstander == "Bilder/stein") {
-                dinScore += 1;
-                seier.play();
-            }
-            else if (motstander == "Bilder/saks") {
-                motstanderScore += 1;
-                tap.play();
-            }
-        }
-        if (dinScore >= 10) {
-            alert("Gratulerer du vant!")
-        }
-        else if (motstanderScore >= 10) {
-            alert("Du tapte. Prøv på nytt")
-        }
-    }
-
-    document.getElementById("din-score").innerText = dinScore;
-    document.getElementById("motstander-score").innerText = motstanderScore
 }   
